@@ -12,7 +12,7 @@ export class DogsService {
   constructor() {
     const likes = localStorage.getItem('likes');
     if (!likes) {
-      localStorage.setItem('likes', JSON.stringify([]));
+      localStorage.setItem('likes', JSON.stringify({}));
     }
   }
 
@@ -24,10 +24,13 @@ export class DogsService {
     return this.dogData.filter(dog => dog.id === dogId)[0];
   }
 
-  getLikes(dogId): number {
+  getLikes(dogId): Observable<number> {
     const likes = JSON.parse(localStorage.getItem('likes'));
-    // tslint:disable-next-line:radix
-    return parseInt(likes[dogId]);
+    if (likes[dogId]) {
+      // tslint:disable-next-line:radix
+      return of(parseInt(likes[dogId]));
+    }
+    return of(0);
   }
 
   update(dog): void {

@@ -8,7 +8,7 @@
 </nav>
 <div class="py-5">
   <div class="row" *ngIf="!viewFavorites">
-    <dog *ngFor="let dog of dogs" [id]="dog.id" [dog]="dog"></dog>
+    <dog *ngFor="let dog of dogs" [dog]="dog"></dog>
   </div>
   <div class="row" *ngIf="viewFavorites">
     <dog *ngFor="let fav of favorites" [dog]="fav"></dog>

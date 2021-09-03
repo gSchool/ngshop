@@ -1,6 +1,9 @@
 import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { DogListComponent } from './dog-list/dog-list.component';
+import {By} from "@angular/platform-browser";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {DogDetailComponent} from "./dog-detail/dog-detail.component";
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -11,7 +14,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        DogListComponent
+        DogListComponent, DogDetailComponent
       ],
     }).compileComponents();
 
@@ -31,5 +34,10 @@ describe('AppComponent', () => {
 
   it('should render dog list component', () => {
     expect(html.querySelector('dog-list')).toBeTruthy();
+  });
+
+  it('should render all dogs', () => {
+    const el = fixture.debugElement.queryAll(By.directive(DogListComponent));
+    expect(el.length).toEqual(1);
   });
 });

@@ -1,10 +1,10 @@
 <div class="card" style="width: 12rem;">
   <img [src]="dog.thumbnail" alt="dog image" class="card-img-top" />
   <h5 class="card-title">{{ dog.name }}</h5>
-  <span>{{ likes }}
-    <button (click)="addLike()" class="btn btn-warning">
+  <span id="likes">{{ likes }}
+    <button (click)="addLike()" class="btn btn-warning likeBtn">
       Like
     </button>
-    <button class="btn btn-light" (click)="addFav()">❤️</button>
+    <button class="btn btn-light favBtn" (click)="addFav()">❤️</button>
   </span>
 </div>

@@ -10,15 +10,12 @@ import { FavoritesService } from '../services/favorites.service';
 })
 export class DogDetailComponent implements OnInit {
   @Input() dog: Dog;
-  @Input() id: any;
   likes: number;
-  favorites: any;
 
   constructor(private dogService: DogsService, private favoritesService: FavoritesService) {}
 
   ngOnInit() {
-    this.likes = this.dogService.getLikes(this.dog.id) || 0;
-    this.favorites = this.favoritesService.all() || 0;
+    this.dogService.getLikes(this.dog.id).subscribe(likes => this.likes = likes);
   }
 
   /**
