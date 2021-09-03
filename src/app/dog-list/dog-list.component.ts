@@ -23,10 +23,10 @@ export class DogListComponent implements OnInit {
   }
 
   loadDogs() {
-    this.dogService.all().subscribe(data => this.dogs = data);
+    this.viewFavorites = false;
   }
 
   loadFavorites() {
-    this.dogs = this.favorites;
+    this.viewFavorites = true;
   }
 }
